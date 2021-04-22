@@ -7,17 +7,20 @@ import java.util.Set;
 public class Poll {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "POLL_ID")
     private Long id;
 
-    @Column(name="QUETION")
+    @Column(name="QUESTION")
     private String question;
 
     @OneToMany
     @JoinColumn(name = "POLL_ID")
     @OrderBy
-    private Set options;
+    private Set<Option> options;
+
+    public Poll() {
+    }
 
     public Long getId() {
         return id;
