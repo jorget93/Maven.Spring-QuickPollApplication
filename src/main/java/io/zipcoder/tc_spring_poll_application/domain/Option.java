@@ -7,13 +7,17 @@ public class Option {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Option_Id")
+   // @Column(name = "Option_Id")
     private Long id;
 
-    @Column(name = "OPTION_VALUE")
+    //@Column(name = "OPTION_VALUE")
     private String value;
 
     public Option() {
+    }
+
+    public Option( String value) {
+        this.value = value;
     }
 
     public Long getId() {

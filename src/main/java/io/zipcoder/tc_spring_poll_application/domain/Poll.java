@@ -1,6 +1,7 @@
 package io.zipcoder.tc_spring_poll_application.domain;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -8,14 +9,14 @@ public class Poll {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "POLL_ID")
+    //@Column(name = "POLL_ID")
     private Long id;
 
-    @Column(name="QUESTION")
+    //@Column(name="QUESTION")
     private String question;
 
     @OneToMany
-    @JoinColumn(name = "POLL_ID")
+   // @JoinColumn(name = "POLL_ID")
     @OrderBy
     private Set<Option> options;
 
