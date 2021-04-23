@@ -17,7 +17,7 @@ public class Poll {
 
     @OneToMany
    // @JoinColumn(name = "POLL_ID")
-    @OrderBy
+    //@OrderBy
     private Set<Option> options;
 
     public Poll() {

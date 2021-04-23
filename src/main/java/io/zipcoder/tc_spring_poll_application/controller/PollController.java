@@ -1,6 +1,7 @@
 package io.zipcoder.tc_spring_poll_application.controller;
 
 import io.zipcoder.tc_spring_poll_application.domain.Poll;
+import io.zipcoder.tc_spring_poll_application.exception.ResourceNotFoundException;
 import io.zipcoder.tc_spring_poll_application.repositories.PollRepository;
 import io.zipcoder.tc_spring_poll_application.services.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,13 @@ public class PollController {
     public ResponseEntity<?> deletePoll(@PathVariable Long pollId){
         pollRepository.delete(pollId);
         return  new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    //Still need to put this method in all methods using (GET,PUT,DELETE)
+    protected void verifyPoll(Long pollId) throws ResourceNotFoundException { Poll poll = pollRepository.findOne(pollId);
+        if(poll == null) {
+            throw new ResourceNotFoundException("Poll with id " + pollId + " not found");
+        }
     }
 
 }
